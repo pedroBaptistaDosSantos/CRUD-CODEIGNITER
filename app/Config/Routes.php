@@ -8,4 +8,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->resource('clients', ['controller' => 'ClientController']);
 $routes->resource('products', ['controller' => 'ProductController']);
+$routes->resource('purchase-orders', ['controller' => 'PurchaseOrderController']);
 
