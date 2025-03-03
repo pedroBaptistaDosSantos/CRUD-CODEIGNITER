@@ -17,9 +17,13 @@ class ProductController extends ResourceController
 
         if ($productModel->save($data)) {
             return $this->respond([
-                'status' => 201,
-                'message' => 'Produto criado com sucesso!',
-                'id' => $productModel->getInsertID()
+                'cabecalho' => [
+                    'status' => 201,
+                    'mensagem' => 'Produto criado com sucesso!'
+                ],
+                'retorno' => [
+                    'id' => $productModel->getInsertID()
+                ]
             ], 201);
         }
 
@@ -32,9 +36,11 @@ class ProductController extends ResourceController
         $products = $productModel->findAll();
 
         return $this->respond([
-            'status' => 200,
-            'message' => 'Produtos encontrados',
-            'data' => $products
+            'cabecalho' => [
+                'status' => 200,
+                'mensagem' => 'Produtos encontrados'
+            ],
+            'retorno' => $products
         ]);
     }
 
@@ -48,13 +54,13 @@ class ProductController extends ResourceController
         }
 
         return $this->respond([
-            'status' => 200,
-            'message' => 'Produto encontrado',
-            'data' => $product
+            'cabecalho' => [
+                'status' => 200,
+                'mensagem' => 'Produto encontrado'
+            ],
+            'retorno' => $product
         ]);
     }
-
-
 
     public function update($id = null)
     {
@@ -68,8 +74,11 @@ class ProductController extends ResourceController
 
         if ($productModel->update($id, $data)) {
             return $this->respond([
-                'status' => 200,
-                'message' => 'Produto atualizado com sucesso'
+                'cabecalho' => [
+                    'status' => 200,
+                    'mensagem' => 'Produto atualizado com sucesso'
+                ],
+                'retorno' => []
             ]);
         }
 
@@ -87,8 +96,11 @@ class ProductController extends ResourceController
 
         if ($productModel->delete($id)) {
             return $this->respondDeleted([
-                'status' => 200,
-                'message' => 'Produto deletado com sucesso'
+                'cabecalho' => [
+                    'status' => 200,
+                    'mensagem' => 'Produto deletado com sucesso'
+                ],
+                'retorno' => []
             ]);
         }
 
